@@ -6,13 +6,27 @@
 <title>Gerbang CBT UP PPG</title>
 
 <script>
-if(!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
-document.documentElement.innerHTML=`
-<div style="font-family:system-ui;text-align:center;padding:80px">
-<h2>📵 AKSES DITOLAK</h2>
-<p>Website ini hanya bisa diakses melalui HP.</p>
+const isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+if(!isMobile){
+document.open();
+document.write(`
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Akses Ditolak</title>
+<style>
+body{margin:0;font-family:system-ui;background:#fff;text-align:center;padding:90px}
+</style>
+</head>
+<body>
+<h1>📵 AKSES DITOLAK</h1>
+<p>Website ini hanya dapat diakses melalui HP.</p>
 <p>Silakan buka ulang menggunakan ponsel.</p>
-</div>`;
+</body>
+</html>
+`);
+document.close();
 }
 </script>
 
