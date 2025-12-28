@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Gerbang CBT UP PPG</title>
+
+<script>
+if(!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
+document.documentElement.innerHTML=`
+<div style="font-family:system-ui;text-align:center;padding:80px">
+<h2>📵 AKSES DITOLAK</h2>
+<p>Website ini hanya bisa diakses melalui HP.</p>
+<p>Silakan buka ulang menggunakan ponsel.</p>
+</div>`;
+}
+</script>
+
+<style>
+body{margin:0;background:#eef5ff;font-family:system-ui}
+#app{max-width:420px;margin:auto;padding:18px}
+input,select,button{width:100%;padding:12px;margin:6px 0;border-radius:10px;border:1px solid #ccc;font-size:16px}
+button{background:#2563eb;color:#fff;border:none;font-weight:600}
+.secondary{background:#f59e0b}
+</style>
+</head>
+
+<body>
+<div id="app">
+<h2 style="text-align:center">GERBANG CBT UP PPG</h2>
+
+<input id="nama" placeholder="Nama Lengkap">
+<select id="mapel">
+<option value="">Pilih Jurusan</option>
+<option value="PAI">Guru PAI</option>
+<option value="MI">Guru Kelas MI</option>
+<option value="RA">Guru Kelas RA</option>
+<option value="QH">Guru Al-Qur'an Hadits</option>
+<option value="AA">Guru Akidah Akhlak</option>
+<option value="FQ">Guru Fiqih</option>
+<option value="BA">Guru Bahasa Arab</option>
+<option value="SKI">Guru SKI</option>
+<option value="PG">Pedagogik</option>
+</select>
+
+<button onclick="shareWA()">📤 SEBARKAN KE GRUP GURU</button>
+<button class="secondary" onclick="bukaShopee()">🔓 BUKA GEMBOK SHOPEE</button>
+
+<div id="status" style="margin:10px 0;color:#dc2626;font-weight:600"></div>
+
+<button onclick="masukSoal()">MASUK KE SOAL</button>
+</div>
+
+<script>
+let wa=false, shopee=false;
+
+function shareWA(){
+wa=true;
+window.open("https://wa.me/?text=Assalamu'alaikum%20ini%20latihan%20PPG%20silakan%20akses%20"+location.href);
+status.innerHTML="✅ Share WhatsApp terdeteksi";
+}
+
+function bukaShopee(){
+shopee=true;
+window.open("https://s.shopee.co.id/8zyM9TjVW5");
+status.innerHTML="✅ Gembok Shopee terbuka";
+}
+
+function masukSoal(){
+if(!nama.value||!mapel.value) return status.innerHTML="Isi nama & jurusan dulu";
+if(!wa) return status.innerHTML="⚠️ Silakan share WA dulu";
+if(!shopee) return status.innerHTML="⚠️ Silakan buka gembok Shopee dulu";
+
+const forms={
+ PAI:"https://forms.gle/ISI_FORM_PAI",
+ MI:"https://forms.gle/ISI_FORM_MI",
+ RA:"https://forms.gle/ISI_FORM_RA",
+ QH:"https://forms.gle/ISI_FORM_QH",
+ AA:"https://forms.gle/ISI_FORM_AA",
+ FQ:"https://forms.gle/ISI_FORM_FQ",
+ BA:"https://forms.gle/ISI_FORM_BA",
+ SKI:"https://forms.gle/ISI_FORM_SKI",
+ PG:"https://forms.gle/ISI_FORM_PG"
+};
+location.href=forms[mapel.value];
+}
+</script>
+</body>
+</html>
